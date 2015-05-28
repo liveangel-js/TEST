@@ -1,17 +1,21 @@
 package com.example.liveangel.test;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class Main extends ActionBarActivity {
-
+    private Button btn_order_detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
     }
 
 
@@ -36,5 +40,14 @@ public class Main extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void initView() {
+        btn_order_detail = (Button) findViewById(R.id.btn_order_detail);
+    }
+
+    public void OnClickOrderDetail(View view) {
+        Intent intent = new Intent(Main.this,OrderDetail.class);
+        startActivity(intent);
     }
 }
