@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_orderDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="详细信息" />
+
+    <TextView
+        android:id="@+id/tv_o_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下单人" />
+
+    <TextView
+        android:id="@+id/tv_o_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="价格" />
+
+    <TextView
+        android:id="@+id/tv_o_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="地点" />
+    <TextView
+        android:id="@+id/tv_o_errander"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="接单人" />
+    <TextView
+        android:id="@+id/tv_o_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始时间" />
+    <TextView
+        android:id="@+id/tv_o_dead_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="结束时间" />
+    <TextView
+        android:id="@+id/tv_o_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="订单状态" />
+
+</LinearLayout>
