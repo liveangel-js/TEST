@@ -1,5 +1,6 @@
 package com.place.order;
 
+import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +38,7 @@ public class ConfirmOrderActivity extends ActionBarActivity {
     private EditText remarks;
     private EditText destination;
     private Handler mHandler;
+    private Handler showMsgHandler;
     Map<String,String> orderSettings;
 
     private String server_address;
@@ -48,6 +50,18 @@ public class ConfirmOrderActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
+        showMsgHandler = new Handler(getMainLooper()){
+            @Override
+            public void handleMessage(Message msg){
+                String str = msg.getData().getString("response");
+                new  AlertDialog.Builder(ConfirmOrderActivity.this)
+                        .setTitle("提示")
+                        .setMessage(str)
+                        .setPositiveButton("确定" ,  null )
+                        .show();
+            }
+        };
+
         server_address = this.getResources().getString(R.string.server_address);
 
         new getUserInfoTask().execute();
@@ -174,16 +188,11 @@ public class ConfirmOrderActivity extends ActionBarActivity {
                     String strResult = EntityUtils.toString(response.getEntity());
                     //show strResult?
                     System.out.println(strResult);
-
-//                    Toast.makeText(ConfirmOrderActivity.this,"下单成功",Toast.LENGTH_SHORT).show();
-//                    mHandler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Toast.makeText(getApplicationContext(), "下单成功！",
-//                                    Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    });
+                    Message msg = new Message();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("response","下单成功！");
+                    msg.setData(bundle);
+                    showMsgHandler.sendMessage(msg);
                 }
                 else
                 {
