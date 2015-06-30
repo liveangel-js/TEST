@@ -108,6 +108,7 @@ public class NoticeActivity extends Activity {
         });
 
     }
+    //获得数据后更新界面显示
     private boolean updateTabData(String tabId, ArrayList<Map<String,Object>> mData ){
         if(tabId.equals("tab01")){
             SimpleAdapter adapter = new SimpleAdapter(this,mData,android.R.layout.simple_list_item_2,
@@ -148,6 +149,7 @@ public class NoticeActivity extends Activity {
         }
         return true;
     }
+    //响应刷新界面操作
 
     private boolean updateTabData(String tabId){
         //计算起止时间
@@ -191,17 +193,8 @@ public class NoticeActivity extends Activity {
 
 
     }
+    //向后台请求数据
     private void getLocationData(final String tab,final int rankTop, final int rankEnd, final String beginDate, final String endDate ){
-        ArrayList<Map<String,Object>> mData= new ArrayList<Map<String,Object>>();
-
-        int lengh = mListTitle.length;
-        for(int i =0; i < lengh; i++) {
-            count++;
-            Map<String,Object> item = new HashMap<String,Object>();
-            item.put("title", count+mListTitle[i]);
-            item.put("text", mListStr[i]);
-            mData.add(item);
-        }
 
 
         //发送 POST 请求
@@ -230,7 +223,7 @@ public class NoticeActivity extends Activity {
     }
 
 
-
+    //发送POST情趣
     private static String sendPost(String url, String param){
         PrintWriter out = null;
         BufferedReader in = null;
