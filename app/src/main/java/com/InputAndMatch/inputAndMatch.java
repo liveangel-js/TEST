@@ -96,7 +96,7 @@ public class inputAndMatch extends Activity{
         }
 
         public void getData(){
-            String requestIP = "http://10.0.3.2:8080/LazyGift/getGoods";
+            String requestIP = "http://218.94.159.104:5000/getGoods";
             HttpClient client = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(requestIP);
 
