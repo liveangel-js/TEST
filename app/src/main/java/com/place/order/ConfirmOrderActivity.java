@@ -38,15 +38,20 @@ public class ConfirmOrderActivity extends ActionBarActivity {
     private EditText destination;
     private Handler mHandler;
     Map<String,String> orderSettings;
+
+    private String server_address;
 //    MyAppVariable myAppVariable;
     private static String DEFAULT_USERADDRESS;
-    private String requestIP = "http://10.0.3.2:8080/LazyGift/confirmOrderSubmit";
+    private String requestIP;// = "http://10.0.3.2:8080/LazyGift/confirmOrderSubmit";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
+        server_address = this.getResources().getString(R.string.server_address);
+
         new getUserInfoTask().execute();
+        requestIP = server_address + "/confirmOrderSubmit";
         confirmButton = (Button) findViewById(R.id.confirmButton);
         goodsName = (EditText) findViewById(R.id.goodsName);
         totalPrice = (EditText) findViewById(R.id.totalPrice);
@@ -104,9 +109,9 @@ public class ConfirmOrderActivity extends ActionBarActivity {
             return null;
         }
         public void  getUserInfo(){
-            String requestIP = "http://10.0.3.2:8080/LazyGift/GetMyAddr";
+            String get_address_requestIP = server_address + "/GetMyAddr";
             HttpClient client = new DefaultHttpClient();
-            HttpPost httpRequest = new HttpPost(requestIP);
+            HttpPost httpRequest = new HttpPost(get_address_requestIP);
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new NameValuePair() {
                 @Override

@@ -2,13 +2,11 @@ package com.setting.address;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +26,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -36,18 +33,19 @@ import java.util.ArrayList;
 
 public class DAddressSettingActivity extends ActionBarActivity {
 
+    private String relative_url = "/MyAddrSet";
     private Spinner dorm_spinner;
     private TextView dorm_view;
     private EditText edit_room;
     private String requestIP;
     private Activity self;
-    private Handler mHandler;
+    private static Handler mHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daddress_setting);
         self = this;
-        mHandler =  new Handler(){
+        mHandler =  new Handler(getMainLooper()){
             @Override
             public void handleMessage(Message msg){
                 String str = msg.getData().getString("response");
@@ -59,7 +57,7 @@ public class DAddressSettingActivity extends ActionBarActivity {
             }
         };
 
-        requestIP = this.getResources().getString(R.string.server_address);
+        requestIP = this.getResources().getString(R.string.server_address) + relative_url;
         dorm_view = (TextView) this.findViewById(R.id.label_dorm);
         dorm_spinner = (Spinner) this.findViewById(R.id.dorm_spinner);
         edit_room = (EditText) this.findViewById(R.id.room_editText);
@@ -73,7 +71,7 @@ public class DAddressSettingActivity extends ActionBarActivity {
         });
 
         String[] mItems = getResources().getStringArray(R.array.spinner_dorms);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, mItems);
+        MyArrayAdapter adapter = new MyArrayAdapter(DAddressSettingActivity.this, mItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dorm_spinner.setAdapter(adapter);
     }

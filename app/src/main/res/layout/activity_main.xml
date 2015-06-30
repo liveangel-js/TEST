@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="下单"
             android:id="@+id/orderButton"
+            android:textSize="16sp"
             android:layout_gravity="center_horizontal" />
 
         <Button
@@ -40,11 +41,11 @@
             android:layout_height="wrap_content"
             android:text="订单筛选" 
             android:layout_gravity="center_horizontal"
-            android:textSize="16px"
-            android:paddingLeft="12px"
-            android:paddingTop="4px"
-            android:paddingBottom="4px"
-            android:paddingRight="12px"
+            android:textSize="16sp"
+            android:paddingLeft="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingRight="12dp"
             android:textAlignment="center" />
 
          <Button
@@ -62,9 +63,10 @@
 
         <Button
             android:id="@+id/btn_order_detail"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="订单详情"
+            android:textSize="16sp"
             android:onClick="OnClickOrderDetail"/>
 
         <Button
@@ -72,12 +74,14 @@
             android:layout_height="wrap_content"
             android:text="输入商品名"
             android:id="@+id/goodButton"
+            android:textSize="16sp"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="显示公告"
             android:id="@+id/noticeButton"
+            android:textSize="16sp"
             android:layout_gravity="center_horizontal"/>
      </LinearLayout>
 </RelativeLayout>

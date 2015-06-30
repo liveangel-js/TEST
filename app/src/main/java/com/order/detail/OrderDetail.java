@@ -159,15 +159,15 @@ public class OrderDetail extends Activity {
             //获得服务器返回信息成功后
             try {
                 JSONObject jsonObj = new JSONObject(result.toString());
-                String staff_id = jsonObj.getString("id");
-                String state = jsonObj.getString("state");
-                String goods_id = jsonObj.getString("goods_id");
-                String create_time = jsonObj.getString("create_time");
-                String delivery_time = jsonObj.getString("delivery_time");
-                String total_price = jsonObj.getString("total_price");
-                String user_id = jsonObj.getString("user_id");
-                String destination = jsonObj.getString("destination");
-                String remark = jsonObj.getString("remark");
+                String staff_id = jsonObj.optString("id");
+                String state = jsonObj.optString("state");
+                String goods_id = jsonObj.optString("goodsId");
+                String create_time = jsonObj.optString("createTime");
+                String delivery_time = jsonObj.optString("deliveryTime");
+                String total_price = jsonObj.optString("totalPrice");
+                String user_id = jsonObj.optString("userId");
+                String destination = jsonObj.optString("destination");
+                String remark = jsonObj.optString("remark");
                 tv_o_staff_id.setText("接单人id: " + staff_id);
                 tv_o_state.setText("订单状态: " + state);
                 tv_o_goods_id.setText("物品id: " + goods_id);
