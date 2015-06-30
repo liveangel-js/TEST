@@ -42,8 +42,7 @@ import java.util.Map;
  */
 public class NoticeActivity extends Activity {
 
-    private String[] mListTitle={"姓名1","姓名2","姓名3","姓名4","姓名5"};
-    private String[] mListStr = {"描述1","描述2","描述3","描述4","描述5"};
+
     private ListView rank_today = null;
     private ListView rank_week = null;
     private ListView rank_total = null;
@@ -110,7 +109,25 @@ public class NoticeActivity extends Activity {
     }
     //获得数据后更新界面显示
     private boolean updateTabData(String tabId, ArrayList<Map<String,Object>> mData ){
+        String[] mListTitle={"可乐","小浣熊干脆面","雪碧"," 沙县小吃卤肉饭","五号电池"};
+        String[] mListStr = {"1","1","1","1","1"};
+        ArrayList<Map<String,Object>> mTestData= new ArrayList<Map<String,Object>>();
+
+        for(int i=0;i<mListTitle.length;i++){
+            Map<String,Object> item = new HashMap<String,Object>();
+            item.put("title", mListTitle[i]);
+            item.put("text","共有"+mListStr[i]+"人买了"+mListTitle[i]);
+
+            mTestData.add(item);
+        }
+        mData=mTestData;
         if(tabId.equals("tab01")){
+
+
+
+
+
+
             SimpleAdapter adapter = new SimpleAdapter(this,mData,android.R.layout.simple_list_item_2,
                     new String[]{"title","text"},new int[]{android.R.id.text1,android.R.id.text2});
             rank_today.setAdapter(adapter);
@@ -118,7 +135,7 @@ public class NoticeActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position,
                                         long id) {
-                    Toast.makeText(getApplicationContext(), "您选择了标题：" + mListTitle[position] + "内容：" + mListStr[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "您选择了", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -130,7 +147,7 @@ public class NoticeActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position,
                                         long id) {
-                    Toast.makeText(getApplicationContext(), "您选择了标题：" + mListTitle[position] + "内容：" + mListStr[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "您选择了" , Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -142,7 +159,7 @@ public class NoticeActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position,
                                         long id) {
-                    Toast.makeText(getApplicationContext(), "您选择了标题：" + mListTitle[position] + "内容：" + mListStr[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "您选择了", Toast.LENGTH_LONG).show();
                 }
             });
 
