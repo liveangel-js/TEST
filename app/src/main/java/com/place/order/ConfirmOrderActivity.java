@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 //import com.app.variable.MyAppVariable;
 import com.example.liveangel.test.R;
@@ -169,8 +170,15 @@ public class ConfirmOrderActivity extends ActionBarActivity {
                     //show strResult?
                     System.out.println(strResult);
 
-
-
+//                    Toast.makeText(ConfirmOrderActivity.this,"下单成功",Toast.LENGTH_SHORT).show();
+//                    mHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(getApplicationContext(), "下单成功！",
+//                                    Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
                 }
                 else
                 {
